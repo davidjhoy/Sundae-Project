@@ -1,6 +1,8 @@
 require_relative "./config/environment"
 require "sinatra/activerecord/rake"
 
+# Dir.glob(File.join('lib/tasks/**/*.rake')).each { |file| load file }
+
 desc "Start the server"
 task :server do  
   if ActiveRecord::Base.connection.migration_context.needs_migration?
@@ -22,4 +24,8 @@ desc "Start the console"
 task :console do
   ActiveRecord::Base.logger = Logger.new(STDOUT)
   Pry.start
+end
+
+task :hello do
+  puts 'hello'
 end
