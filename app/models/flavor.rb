@@ -1,4 +1,4 @@
 class Flavor < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :sundae
+  has_many :sundaes
+  has_many :users, through: :sundaes
 end
