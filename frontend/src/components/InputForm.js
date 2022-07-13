@@ -1,11 +1,14 @@
 import React from 'react'
-import { Stack, HStack, VStack, Text, Heading, Box, Flex } from '@chakra-ui/react'
+import { Stack, HStack, Input, Text, Heading, Box, Flex } from '@chakra-ui/react'
 
 const InputForm = () => {
   return (
-    <Box p='20' border='1px' size='100%' rounded = 'md'>
-        <Text>Add Sundae:</Text>
-    </Box>
+    
+        <HStack p='20'  size='100%' rounded = 'md' w='60%'>
+        <Text w='100pt'>Add Sundae:</Text>
+        <Input placeholder='Average Sundae' />
+        </HStack>
+ 
     
   )
 }
