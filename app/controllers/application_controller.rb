@@ -13,8 +13,13 @@ class ApplicationController < Sinatra::Base
   post "/sundaes" do
     Sundae.create(name: params[:name], container: params[:container], topping: params[:topping], user_id: params[:user_id], flavor_id: params[:flavor_id]).to_json
   end
+  
+  post "/users" do
+    
+  end
 
-  update "/sundaes/:id" do
+
+  patch "/sundaes/:id" do
     update_sundae = Sundae.find(params[:id])
     update_sundae.update(name: params[:name], container: params[:container], topping: params[:topping], user_id: params[:user_id], flavor_id: params[:flavor_id]).to_json
   end
