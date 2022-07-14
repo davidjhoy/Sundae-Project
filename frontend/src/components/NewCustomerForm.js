@@ -1,27 +1,16 @@
 import React, { useState } from 'react'
 import { Stack, VStack, Input, Button, Text, Select, Heading, Box, Flex, useListStyles, useDisclosure, ScaleFade, flattenTokens } from '@chakra-ui/react'
-import { Formik, Field } from "formik";
 
 
-const InputForm = ({sundaes}) => {
+const NewCustomerForm = ({sundaes}) => {
   const allFlavors = sundaes.map((sundae) => sundae.name)
-  const allToppings = sundaes.map((sundae) => sundae.topping)
+
   const [name, setName] = useState('')
-  const [container, setContainer] = useState('')
-  const [flavor, setFlavor] = useState('')
-  const [topping, setTopping] = useState('')
+  const [favorite_flavor, setFavoriteFlavor] = useState('')
+  const [age_of_account, setAgeOfAccount] = useState('')
+  
   
 
-  function handleFlavor(e){
-    setFlavor(e.target.value)
-    console.log(e.target.value)
-    
-  }
-
-  function handleTopping(e){
-    setTopping(e.target.value)
-    console.log(e.target.value)
-  }
 
   function handleName(e){
     setName(e.target.value)
@@ -29,25 +18,30 @@ const InputForm = ({sundaes}) => {
   }
 
 
-  function handleContainer(e){
-    setContainer(e.target.value)
+  function handleFavoriteFlavor(e){
+    setFavoriteFlavor(e.target.value)
+
+    setAgeOfAccount(Math.floor(Math.random() * 11))
     console.log(e.target.value)
   }
 
+
   function handleSubmit(e){
     e.preventDefault()
-    console.log(name, container, flavor, topping)
-    //make post request here
-    fetch(`http://localhost:9292/sundaes`, {
+  
+
+
+
+ 
+    fetch(`http://localhost:9292/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: name,
-        container: container,
-        flavor: flavor,
-        topping: topping
+        flavor: favorite_flavor,
+        age: age_of_account
       }),
     })
       .then((res) => res.json())
@@ -60,11 +54,9 @@ const InputForm = ({sundaes}) => {
     
         <VStack p='20'  size='100%' rounded = 'md' w='100%'>
           <form onSubmit = {handleSubmit}>
-              <Input placeholder='Sundae Name' size='md' value ={name} onChange={handleName}/>
+              <Input placeholder='Customer Name' size='md' value ={name} onChange={handleName} color='black'/>
 
-              <Input placeholder ='Container' size='md' value ={container} onChange ={handleContainer}/>
-
-              <Select placeholder="Select Flavor" onChange={handleFlavor} color='black'>
+              <Select placeholder="Select Flavor" onChange={handleFavoriteFlavor} color ='black'>
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>
                 <option value={allFlavors[1]}>{allFlavors[1]}</option>
                 <option value={allFlavors[2]}>{allFlavors[2]}</option>
@@ -77,20 +69,9 @@ const InputForm = ({sundaes}) => {
                 <option value={allFlavors[9]}>{allFlavors[9]}</option>
               </Select>
 
-              <Select placeholder="Select Toppings" onChange={handleTopping} color = 'black'>
-                <option value={allToppings[0]}>{allToppings[0]}</option>
-                <option value={allToppings[1]}>{allToppings[1]}</option>
-                <option value={allToppings[2]}>{allToppings[2]}</option>
-                <option value={allToppings[3]}>{allToppings[3]}</option>
-                <option value={allToppings[4]}>{allToppings[4]}</option>
-                <option value={allToppings[5]}>{allToppings[5]}</option>
-                <option value={allToppings[6]}>{allToppings[6]}</option>
-                <option value={allToppings[7]}>{allToppings[7]}</option>
-                <option value={allToppings[8]}>{allToppings[8]}</option>
-                <option value={allToppings[9]}>{allToppings[9]}</option>
-              </Select>
+
               
-              <Button bgGradient='linear(to-r, yellow.400, red.400)' color="white" type='submit'>Make Sundae</Button>
+              <Button bgGradient='linear(to-r, yellow.400, red.400)' color="white" type='submit'>Submit New Customer</Button>
             </form>
          
         </VStack>
@@ -99,7 +80,7 @@ const InputForm = ({sundaes}) => {
   )
 }
 
-export default InputForm
+export default NewCustomerForm;
 
 
 
