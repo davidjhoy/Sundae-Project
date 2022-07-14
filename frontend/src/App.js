@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import Gallery from './Gallery';
 import Homepage from './Homepage'
-import InputForm from './components/InputForm';
+import InputForm from './components/InputForm'
 import { Stack, HStack, VStack, Heading } from '@chakra-ui/react'
 import { Switch, Route, Link } from "react-router-dom";
 
@@ -10,33 +10,37 @@ function App() {
 
 const [sundaes, setsundaes] = useState([{name: "Default"}])
 
-const parseData = (sundaes)=>{
-    setsundaes(sundaes)
-}
+
+
+// const parseData = (sundaes)=>{
+//     setsundaes(sundaes)
+// }
 
 useEffect(()=>{
     fetch("http://localhost:9292/sundaes")
     .then(response=> response.json())
-    .then(data=> parseData(data))
+    .then(data=> setsundaes(data))
 },[])
 
+  function makeSundae() {
+    const newSundae = {}
+  }
 
   return (
     <VStack p='5'>
       <Heading p="8" size ='4xl' bgGradient='linear(to-r, yellow.400, red.400)'
-  bgClip='text'>Sundae Supreme</Heading>
+  bgClip='text'>Bizzarro Sundaes</Heading>
     <Link id = 'gallery' to = '/Gallery'>Gallery </Link>
     <Link id = 'homepage' to = '/Homepage'>Homepage </Link>
-      <InputForm p='4'/>
       {/* <Gallery sundaes={sundaes.length > 0 ? sundaes: null }/> */}
-      
+      <InputForm sundaes={sundaes}/>
         <Switch>
-          <Route exact path ='/' ><Homepage /></Route>
+          <Route exact path ='/' ><Homepage sundaes={sundaes}/></Route>
           <Route path="/Gallery" >
             <Gallery sundaes={sundaes.length > 0 ? sundaes: null}/>
-            </Route>
+          </Route>
+       </Switch>
             
-        </Switch>
 
       
     </VStack>

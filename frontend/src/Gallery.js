@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Card from './components/card'
+import InputForm from "./components/InputForm"
 import { Wrap, WrapItem, Center } from '@chakra-ui/react'
 
 //FRONTEND BUILDOUT: 
