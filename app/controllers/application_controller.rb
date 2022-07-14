@@ -9,13 +9,18 @@ class ApplicationController < Sinatra::Base
   get "/sundaes" do
     Sundae.all.to_json
   end
-
+  
+  get "/flavors" do
+    Flavor.all.to_json
+  end
+  
   post "/sundaes" do
     Sundae.create(name: params[:name], container: params[:container], topping: params[:topping], user_id: params[:user_id], flavor_id: params[:flavor_id]).to_json
   end
+
   
   post "/users" do
-    
+
   end
 
 

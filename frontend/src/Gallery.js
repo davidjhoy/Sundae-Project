@@ -18,8 +18,16 @@ import { Wrap, WrapItem, Center } from '@chakra-ui/react'
 //stretch goals: use an image api to query images and add to boxes 
 
 
-function Gallery({sundaes}){
+function Gallery({sundaes, setSundaes}){
 
+  
+function deleteSundaes(id) {
+  const updatedSundae = sundaes.filter((sundae) => sundae.id !== id)
+
+  setSundaes(updatedSundae)
+  console.log(id)
+  {fetch(`http://localhost:9292/${id}`, {method: "DELETE"})}
+}
 
 
 const sundae_list = sundaes.map((sundae)=>{
@@ -28,8 +36,8 @@ const sundae_list = sundaes.map((sundae)=>{
     // <h1 key = {sundae.name}>{sundae.name}</h1>
     // </Box>)
     
-
-<Card key = {sundae.name} name = {sundae.name} container = {sundae.container} topping = {sundae.topping} user_id = {sundae.user_id} p = '2'/>
+//had to change the card key from sundae.name to sundae.id, because otherwise there would be more than one key when we create a new card.
+<Card key = {sundae.id} name = {sundae.name} container = {sundae.container} topping = {sundae.topping} user_id = {sundae.user_id} deleteSundaes={deleteSundaes} id={sundae.id} p = '2'/>
     )
     
 })

@@ -8,22 +8,19 @@ import { Switch, Route, Link } from "react-router-dom";
 
 function App() {
 
-const [sundaes, setsundaes] = useState([{name: "Default"}])
+const [sundaes, setSundaes] = useState([{name: "Default"}])
 
 
 
-// const parseData = (sundaes)=>{
-//     setsundaes(sundaes)
-// }
 
 useEffect(()=>{
     fetch("http://localhost:9292/sundaes")
     .then(response=> response.json())
-    .then(data=> setsundaes(data))
+    .then(data=> setSundaes(data))
 },[])
 
-  function makeSundae() {
-    const newSundae = {}
+  function makeSundae(newSundae) {
+    setSundaes([...sundaes, newSundae])
   }
 
   return (
@@ -33,11 +30,11 @@ useEffect(()=>{
     <Link id = 'gallery' to = '/Gallery'>Gallery </Link>
     <Link id = 'homepage' to = '/Homepage'>Homepage </Link>
       {/* <Gallery sundaes={sundaes.length > 0 ? sundaes: null }/> */}
-      <InputForm sundaes={sundaes}/>
+      <InputForm makeSundae={makeSundae} sundaes={sundaes}/>
         <Switch>
           <Route exact path ='/' ><Homepage sundaes={sundaes}/></Route>
           <Route path="/Gallery" >
-            <Gallery sundaes={sundaes.length > 0 ? sundaes: null}/>
+            <Gallery setSundaes={setSundaes} sundaes={sundaes.length > 0 ? sundaes: null}/>
           </Route>
        </Switch>
             

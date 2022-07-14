@@ -1,11 +1,10 @@
 import React from 'react'
-import { Stack, HStack, Center, Image, Heading, Box, Text, WrapItem } from '@chakra-ui/react'
+import { Stack, HStack, Center, Image, Heading, Box, Text, WrapItem, Button } from '@chakra-ui/react'
 
-function Card({name, container, topping, user_id}){
+function Card({name, container, topping, user_id, deleteSundaes}){
 
 
 
-    //Here i need to fetch the data from the backend and send it to the card components
 
 
   return (
@@ -16,6 +15,7 @@ function Card({name, container, topping, user_id}){
             <Text>{container}</Text>
             <Text>{topping}</Text>
             <Text> {user_id}</Text>
+            <Button bgGradient='linear(to-r, yellow.400, red.400)' color="white" onClick={deleteSundaes}>Delete Sundae</Button>
           </Box>
       </Box>
     </WrapItem>
