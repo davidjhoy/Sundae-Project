@@ -10,15 +10,15 @@ function Homepage({sundaes}){
 
 
   return (
-    <VStack spacing = {8} align = 'stretch'>
-    {/* spacing = {8} direction='row'> */}
+    <VStack spacing = {8} alignItems = 'center'>
+    
 
       
       <ExistingUserButton sundaes={sundaes.length > 0 ? sundaes: null} />
 
     
      
-      <NewUserButton sundaes={sundaes.length > 0 ? sundaes: null}/>
+      <NewUserButton sundaes={sundaes.length > 0 ? sundaes: null} />
 
      
 

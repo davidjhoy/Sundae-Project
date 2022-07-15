@@ -9,14 +9,14 @@ const ExistingUserButton = ({sundaes}) => {
     const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box >
+    <Box display="flex">
         <Button onClick={onToggle} size='lg' alignSelf={'center'}>Existing Customer</Button>
         <ScaleFade initialScale={0.9} in={isOpen} offsety='20px' offsetx='-20000px'>
           <Box
             p='40px'
             color='white'
             mt='4'
-            bg='teal.50'
+            bg='red.100'
             rounded='md'
             shadow='md'
           >

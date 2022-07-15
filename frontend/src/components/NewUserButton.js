@@ -7,7 +7,7 @@ import NewCustomerForm from './NewCustomerForm'
 const NewUserButton = ({sundaes}) => {
     const { isOpen, onToggle } = useDisclosure()
   return (
-    <Box>
+    <Box display="flex">
       <Button onClick={onToggle} size='lg'>New Customer</Button>
       <ScaleFade initialScale={0.9} in={isOpen} offsety='20px'>
         <Box
