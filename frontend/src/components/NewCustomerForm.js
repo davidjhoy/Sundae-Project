@@ -53,10 +53,13 @@ const NewCustomerForm = ({sundaes}) => {
     
     
         <VStack p='20'  size='100%' rounded = 'md' w='100%'>
-          <form onSubmit = {handleSubmit}>
-              <Input placeholder='Customer Name' size='md' value ={name} onChange={handleName} color='black'/>
+          <form onSubmit = {handleSubmit} centerContent>
+              <Input placeholder='Customer Name' size='md' value ={name} onChange={handleName} color='black' 
+              margin="10pt"
+              borderColor="black"/>
 
-              <Select placeholder="Select Favorite Flavor" onChange={handleFavoriteFlavor} color ='black'>
+              <Select placeholder="Select Favorite Flavor" onChange={handleFavoriteFlavor} color ='black' margin="10pt"
+              borderColor="black">
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>
                 <option value={allFlavors[1]}>{allFlavors[1]}</option>
                 <option value={allFlavors[2]}>{allFlavors[2]}</option>
@@ -71,7 +74,9 @@ const NewCustomerForm = ({sundaes}) => {
 
 
               
-              <Button bgGradient='linear(to-r, yellow.400, red.400)' color="white" type='submit'>Submit New Customer</Button>
+              <Button bgGradient= 'linear(to-r, red.500, yellow.500)'
+                  _hover={{ bgGradient:'linear(to-r, teal.200, green.200)', }} color="black" type='submit' margin="10pt"
+                  >Submit New Customer</Button>
             </form>
          
         </VStack>

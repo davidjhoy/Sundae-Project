@@ -1,6 +1,6 @@
 import React from 'react'
 import InputForm from './InputForm'
-import {Button, useDisclosure, ScaleFade, Box, Center} from '@chakra-ui/react'
+import {Collapse, Button, useDisclosure, ScaleFade, Box, Center} from '@chakra-ui/react'
 
 const ExistingUserButton = ({sundaes}) => {
 
@@ -9,20 +9,21 @@ const ExistingUserButton = ({sundaes}) => {
     const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box display="flex">
-        <Button onClick={onToggle} size='lg' alignSelf={'center'}>Existing Customer</Button>
-        <ScaleFade initialScale={0.9} in={isOpen} offsety='20px' offsetx='-20000px'>
+    <Box display="flex" justifyItems="center">
+        <Button onClick={onToggle} size='lg' alignSelf={'center'} bgGradient= 'linear(to-r, red.500, yellow.500)'
+                  _hover={{ bgGradient:'linear(to-r, teal.200, green.200)', }}>Existing Customer</Button>
+        <Collapse in={isOpen} animateOpacity>
           <Box
             p='40px'
             color='white'
             mt='4'
-            bg='red.100'
+            bg='teal.50'
             rounded='md'
             shadow='md'
           >
-            <InputForm sundaes={sundaes} />
+          <InputForm sundaes={sundaes} />
           </Box>
-        </ScaleFade>
+        </Collapse>
         
     </Box>
   )

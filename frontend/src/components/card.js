@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CardForm from './UpdateCardForm';
-import { Button, VStack, HStack, Center, Image, Heading, Box, Text, WrapItem, IconButton, Icon } from '@chakra-ui/react'
+import { Button, VStack, HStack, Center, Image, Heading, Box, Text, WrapItem, IconButton, Icon, GridItem, Grid } from '@chakra-ui/react'
 import {
   Popover,
   PopoverTrigger,
@@ -80,16 +80,19 @@ function Card({name, container, topping, user_id, id, flavor_id, sundaes, setSun
     <WrapItem w='380px' h='400px' bg='red.100' justifyContent={'center'} rounded = 'md'>
       <VStack>
       <Box >
-        <Heading padding='5' color = 'orange.400'>{name}</Heading>
-        <Box boxSize='small' align='center'><Image src={picArray[0]}/></Box>
+        <Box border='1pt' width='380px' h='80px' overflow='hidden'>
+        <Heading padding='5' color = 'orange.400' align='center' lineHeight='tight'
+          noOfLines={1} >{name}</Heading>
+        </Box>
+        <Box boxSize='small' align='center'><Image src={picArray[0]} paddingTop={'20pt'}/></Box>
           <Box justifyContent={'center'}>
-            <Text>{container}</Text>
-            <Text>{topping}</Text>
-            <Text> {user_id}</Text>
+            <Text align = 'center' p ='4pt'>Container: {container}</Text>
+            <Text align= 'center' paddingBottom={'30pt'}>Topping: {topping}</Text>
+            
           </Box>
       </Box>
       <HStack>
-      
+       
       <Popover
         isOpen={isOpen}
         initialFocusRef={firstFieldRef}
@@ -99,7 +102,7 @@ function Card({name, container, topping, user_id, id, flavor_id, sundaes, setSun
         closeOnBlur={false}
       >
         <PopoverTrigger>
-          <IconButton size='sm' icon={<EditIcon />} />
+          <IconButton size='sm' icon={<EditIcon />} bgColor = 'yellow.100'/>
         </PopoverTrigger>
         <PopoverContent p={5}>
           <FocusLock returnFocus persistentFocus={false}>
@@ -109,7 +112,8 @@ function Card({name, container, topping, user_id, id, flavor_id, sundaes, setSun
           </FocusLock>
         </PopoverContent>
       </Popover>
-      <IconButton onClick={handleDelete} icon={<CloseIcon/>} align ='right'/>
+     
+      <IconButton onClick={handleDelete} icon={<CloseIcon/>} size='sm' spacingX = '5pt' bgColor='red.300'/>
       
       </HStack>
       </VStack>
@@ -121,27 +125,5 @@ function Card({name, container, topping, user_id, id, flavor_id, sundaes, setSun
   
   )
 }
+
 export default Card;
-
-
-
-
-
-
-
-// function UpdateSundaes(id) {
-//   const [item, setItem] = useState({})
-//   fetch(`/addsundae/${id}`, {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       name: item.name,
-//       container: item.container,
-//       topping: item.topping
-//     }),
-//   })
-//     .then((res) => res.json())
-//     .then((result) => setItem(result))
-// }

@@ -1,15 +1,21 @@
 import React from 'react'
 import InputForm from './InputForm'
-import {onToggle, Button, useDisclosure, ScaleFade, Box} from '@chakra-ui/react'
+import {onToggle, Collapse, Button, useDisclosure, ScaleFade, Box} from '@chakra-ui/react'
 import NewCustomerForm from './NewCustomerForm'
 
 
 const NewUserButton = ({sundaes}) => {
     const { isOpen, onToggle } = useDisclosure()
   return (
-    <Box display="flex">
-      <Button onClick={onToggle} size='lg'>New Customer</Button>
-      <ScaleFade initialScale={0.9} in={isOpen} offsety='20px'>
+    <Box w="100%" display="flex" justifyItems="center"  >
+      <Button
+      alignSelf={'center'}
+      onClick={onToggle} 
+      size='lg' 
+      bgGradient= 'linear(to-r, red.500, yellow.500)'
+                  _hover={{ bgGradient:'linear(to-r, teal.200, green.200)', }}>New Customer</Button>
+      <Collapse in={isOpen} animateOpacity>
+      {/* // initialScale={0.9} in={isOpen}  */}
         <Box
           p='40px'
           color='white'
@@ -20,7 +26,7 @@ const NewUserButton = ({sundaes}) => {
         >
           <NewCustomerForm sundaes = {sundaes}/>
         </Box>
-      </ScaleFade>
+      </Collapse>
     </Box>
   )
   

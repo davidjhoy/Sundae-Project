@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Stack, VStack, Input, Button, Text, Select, Heading, Box, Flex, useListStyles, useDisclosure, ScaleFade, flattenTokens } from '@chakra-ui/react'
+import { Stack, StackDivider, VStack, Input, Button, Text, Select, Heading, Box, Flex, useListStyles, useDisclosure, ScaleFade, flattenTokens } from '@chakra-ui/react'
 
 
 
@@ -49,7 +49,7 @@ const InputForm = ({sundaes}) => {
 
   function handleSubmit(e){
     e.preventDefault()
-    console.log(name, container, flavor, topping)
+    console.log(name, container, flavor, topping, )
     //make post request here
     fetch(`http://localhost:9292/sundaes`, {
       method: 'POST',
@@ -72,13 +72,22 @@ const InputForm = ({sundaes}) => {
   return (
     
     
-        <VStack p='20'  size='100%' rounded = 'md' w='100%'>
-          <form onSubmit = {handleSubmit}>
-              <Input placeholder='Sundae Name' size='md' value ={name} onChange={handleName} color='black'/>
+        <VStack divider={<StackDivider borderColor='gray.200' />}p='20'  size='100%' rounded = 'md' w='100%' spaceBetween="10px">
+          <form onSubmit = {handleSubmit}
+          >
+              <Input 
+              margin="10pt"
+              borderColor="black"
+              placeholder='Sundae Name' size='md' value ={name} onChange={handleName} color='black'/>
 
-              <Input placeholder ='Container' size='md' value ={container} onChange ={handleContainer} color='black'/>
+              
 
-              <Select color="black" placeholder="Select User" >
+
+              <Input placeholder ='Container' margin="10pt"
+              borderColor="black" size='md' value ={container} onChange ={handleContainer} color='black'/>
+
+              <Select color="black" placeholder="Select User" margin="10pt"
+              borderColor="black">
                   <option value={allUserNames[0]}>{allUserNames[0]}</option>
                   <option value={allUserNames[1]}>{allUserNames[1]}</option>
                   <option value={allUserNames[2]}>{allUserNames[2]}</option>
@@ -91,7 +100,8 @@ const InputForm = ({sundaes}) => {
                   <option value={allUserNames[9]}>{allUserNames[9]}</option>
               </Select>
 
-              <Select placeholder="Select Flavor" onChange={handleFlavor} color='black'>
+              <Select placeholder="Select Flavor" onChange={handleFlavor} color='black' margin="10pt"
+              borderColor="black">
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>
                 <option value={allFlavors[1]}>{allFlavors[1]}</option>
                 <option value={allFlavors[2]}>{allFlavors[2]}</option>
@@ -104,7 +114,8 @@ const InputForm = ({sundaes}) => {
                 <option value={allFlavors[9]}>{allFlavors[9]}</option>
               </Select>
 
-              <Select placeholder="Select Toppings" onChange={handleTopping} color = 'black'>
+              <Select placeholder="Select Toppings" onChange={handleTopping} color = 'black' margin="10pt"
+              borderColor="black">
                 <option value={allToppings[0]}>{allToppings[0]}</option>
                 <option value={allToppings[1]}>{allToppings[1]}</option>
                 <option value={allToppings[2]}>{allToppings[2]}</option>
@@ -117,7 +128,9 @@ const InputForm = ({sundaes}) => {
                 <option value={allToppings[9]}>{allToppings[9]}</option>
               </Select>
               
-              <Button bgGradient='linear(to-r, yellow.400, red.400)' color="white" type='submit'>Make Sundae</Button>
+              <Button bgGradient= 'linear(to-r, red.500, yellow.500)'
+                  _hover={{ bgGradient:'linear(to-r, teal.200, green.200)' }} color="black" type='submit' margin="10pt"
+                  >Make Sundae</Button>
             </form>
          
         </VStack>

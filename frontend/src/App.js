@@ -41,11 +41,11 @@ useEffect(()=>{
               variant='outline'
             />
                   <MenuList>
-                    <MenuItem  >
+                    <MenuItem  bgColor='green.100'>
                       <Link id = 'gallery' to = '/Gallery'>Gallery </Link>
                     </MenuItem>
 
-                    <MenuItem >
+                    <MenuItem bgColor='pink.100'>
                       <Link id = 'homepage' to = '/Homepage'>Homepage </Link>
                     </MenuItem>
                     

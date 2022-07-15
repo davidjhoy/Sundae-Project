@@ -10,7 +10,7 @@ function Homepage({sundaes}){
 
 
   return (
-    <VStack spacing = {8} alignItems = 'center'>
+    <VStack spacing = {8} alignItems = 'center' h="100vh">
     
 
       
