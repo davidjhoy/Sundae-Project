@@ -22,6 +22,10 @@ class ApplicationController < Sinatra::Base
     Sundae.create(name: params[:name], container: params[:container], topping: params[:topping], user_id: params[:user_id], flavor_id: params[:flavor_id]).to_json
   end
 
+  get "/users" do
+    User.all.to_json
+  end
+  
   post "/users" do 
     User.create(user_name: params[:name], favorite_flavor: params[:flavor], age_of_account: params[:age]).to_json
   end

@@ -1,38 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Stack, VStack, Input, Button, Text, Select, Heading, Box, Flex, useListStyles, useDisclosure, ScaleFade, flattenTokens } from '@chakra-ui/react'
 
 
 
 const InputForm = ({sundaes}) => {
+
+  
+  const [users, setUsers] = useState([])
   const allFlavors = sundaes.map((sundae) => sundae.name)
   const allToppings = sundaes.map((sundae) => sundae.topping)
+  const allUserNames = users.map((user) => user.user_name)
   const [name, setName] = useState('')
   const [container, setContainer] = useState('')
   const [flavor, setFlavor] = useState('')
   const [topping, setTopping] = useState('')
   
-
+  
+  
   function handleFlavor(e){
     setFlavor(e.target.value)
     console.log(e.target.value)
     
   }
-
+  
   function handleTopping(e){
     setTopping(e.target.value)
     console.log(e.target.value)
   }
-
+  
   function handleName(e){
     setName(e.target.value)
     console.log(e.target.value)
   }
-
-
+  
+  
   function handleContainer(e){
     setContainer(e.target.value)
     console.log(e.target.value)
   }
+
+
+  
+  useEffect(() => {
+    fetch('http://localhost:9292/users')
+    .then(res=>res.json())
+    .then(data=>setUsers(data))
+  }, [])
 
   function handleSubmit(e){
     e.preventDefault()
@@ -54,6 +67,7 @@ const InputForm = ({sundaes}) => {
       .then((result) => console.log(result))
   }
   
+  
 
   return (
     
@@ -63,6 +77,19 @@ const InputForm = ({sundaes}) => {
               <Input placeholder='Sundae Name' size='md' value ={name} onChange={handleName} color='black'/>
 
               <Input placeholder ='Container' size='md' value ={container} onChange ={handleContainer} color='black'/>
+
+              <Select color="black" placeholder="Select User" >
+                  <option value={allUserNames[0]}>{allUserNames[0]}</option>
+                  <option value={allUserNames[1]}>{allUserNames[1]}</option>
+                  <option value={allUserNames[2]}>{allUserNames[2]}</option>
+                  <option value={allUserNames[3]}>{allUserNames[3]}</option>
+                  <option value={allUserNames[4]}>{allUserNames[4]}</option>
+                  <option value={allUserNames[5]}>{allUserNames[5]}</option>
+                  <option value={allUserNames[6]}>{allUserNames[6]}</option>
+                  <option value={allUserNames[7]}>{allUserNames[7]}</option>
+                  <option value={allUserNames[8]}>{allUserNames[8]}</option>
+                  <option value={allUserNames[9]}>{allUserNames[9]}</option>
+              </Select>
 
               <Select placeholder="Select Flavor" onChange={handleFlavor} color='black'>
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>
