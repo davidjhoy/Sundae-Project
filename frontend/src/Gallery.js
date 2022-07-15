@@ -29,13 +29,13 @@ const sundae_list = sundaes.map((sundae)=>{
     // </Box>)
     
 
-<Card key = {sundae.id} name = {sundae.name} container = {sundae.container} topping = {sundae.topping} user_id = {sundae.user_id} p = '2' id = {sundae.id} setSundaes = {setSundaes}/>
+<Card key = {sundae.id} name = {sundae.name} container = {sundae.container} topping = {sundae.topping} user_id = {sundae.user_id} p = '2' id = {sundae.id} setSundaes = {setSundaes} flavor_id ={sundae.flavor_id} sundaes = {sundaes}/>
     )
     
 })
 
 
-console.log(sundae_list)
+
   return (
     
 

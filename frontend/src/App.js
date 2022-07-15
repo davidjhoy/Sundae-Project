@@ -69,7 +69,7 @@ useEffect(()=>{
           </Route>
 
           <Route path="/Gallery" >
-            <Gallery sundaes={sundaes.length > 0 ? sundaes: null} setSundaes = {setsundaes}/>
+            <Gallery sundaes={sundaes.length > 0 ? sundaes: null} setSundaes = {setsundaes} />
           </Route>
 
        </Switch>
