@@ -60,9 +60,9 @@ const InputForm = ({sundaes}) => {
     
         <VStack p='20'  size='100%' rounded = 'md' w='100%'>
           <form onSubmit = {handleSubmit}>
-              <Input placeholder='Sundae Name' size='md' value ={name} onChange={handleName}/>
+              <Input placeholder='Sundae Name' size='md' value ={name} onChange={handleName} color='black'/>
 
-              <Input placeholder ='Container' size='md' value ={container} onChange ={handleContainer}/>
+              <Input placeholder ='Container' size='md' value ={container} onChange ={handleContainer} color='black'/>
 
               <Select placeholder="Select Flavor" onChange={handleFlavor} color='black'>
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>

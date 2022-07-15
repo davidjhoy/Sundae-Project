@@ -56,7 +56,7 @@ const NewCustomerForm = ({sundaes}) => {
           <form onSubmit = {handleSubmit}>
               <Input placeholder='Customer Name' size='md' value ={name} onChange={handleName} color='black'/>
 
-              <Select placeholder="Select Flavor" onChange={handleFavoriteFlavor} color ='black'>
+              <Select placeholder="Select Favorite Flavor" onChange={handleFavoriteFlavor} color ='black'>
                 <option value={allFlavors[0]} >{allFlavors[0]}</option>
                 <option value={allFlavors[1]}>{allFlavors[1]}</option>
                 <option value={allFlavors[2]}>{allFlavors[2]}</option>

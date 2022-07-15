@@ -2,7 +2,7 @@ import React from 'react';
 import InputForm from './components/InputForm';
 import ExistingUserButton from './components/ExistingUserButton';
 import NewUserButton from './components/NewUserButton';
-import {Stack, Feature} from '@chakra-ui/react';
+import  { Stack, VStack, Feature} from '@chakra-ui/react';
 
 
 function Homepage({sundaes}){
@@ -10,18 +10,20 @@ function Homepage({sundaes}){
 
 
   return (
-    <Stack spacing = {8} direction='row'>
+    <VStack spacing = {8} align = 'stretch'>
+    {/* spacing = {8} direction='row'> */}
 
       
       <ExistingUserButton sundaes={sundaes.length > 0 ? sundaes: null} />
 
-
+    
      
       <NewUserButton sundaes={sundaes.length > 0 ? sundaes: null}/>
 
+     
 
 
-    </Stack>
+    </VStack>
   
 )}
 
